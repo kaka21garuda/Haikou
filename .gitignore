@@ -4,3 +4,38 @@ dist
 build
 coverage
 EOF
+
+# Dependencies
+.pnpm-store/
+
+# Hardhat files
+artifacts
+cache
+typechain
+typechain-types
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# System files
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local files
+*.local
+
+# Typescript
+*.tsbuildinfo
+
+# Next.js
+.next
+out
