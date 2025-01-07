@@ -1,31 +1,40 @@
-name: CI
+name: CI/CD
 
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+  workflow_dispatch:
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     env:
       HAIKOU_SECRETS: ${{ secrets.HAIKOU_SECRETS }}
       
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
-    - uses: pnpm/action-setup@v2
+    - name: Setup PNPM
+      uses: pnpm/action-setup@v2
       with:
         version: 8
         
-    - uses: actions/setup-node@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
         node-version: '18'
         cache: 'pnpm'
         
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm install --frozen-lockfile
+      
+    - name: Type check
+      run: pnpm tsc --noEmit
       
     - name: Lint
       run: pnpm lint
@@ -35,3 +44,26 @@ jobs:
       
     - name: Build
       run: pnpm build
+
+  sync-branches:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        
+    - name: Configure Git
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        
+    - name: Sync main with develop
+      run: |
+        git checkout main
+        git pull origin main
+        git merge --no-ff origin/develop -m "chore: sync main with develop"
+        git push origin main
