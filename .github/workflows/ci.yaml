@@ -59,6 +59,7 @@ jobs:
       run: |
         echo "Installing dependencies..."
         pnpm install --no-frozen-lockfile
+        pnpm -r exec -- pnpm install --no-frozen-lockfile
         
     - name: Generate Prisma Client
       run: |
