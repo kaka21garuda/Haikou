@@ -1,8 +1,7 @@
 // src/server.ts
 import express, { Request, Response, NextFunction } from 'express';
 import { register, transactionCounter, agentOperationsCounter, healthCheck } from './metrics';
-import { logger, logError, logInfo, logHTTP, logDebug, logWarning } from '@haikou/logger';
-
+import { logError, logInfo, logHTTP, logDebug, logWarning } from '@haikou/logger';
 // Middleware
 const requestLogger = (req: Request, _res: Response, next: NextFunction) => {
   logHTTP(`Incoming request`, {

@@ -10,22 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: haikou_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     env:
       HAIKOU_SECRETS: ${{ secrets.HAIKOU_SECRETS }}
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/haikou_test
@@ -48,35 +32,26 @@ jobs:
         node-version: '20'
         cache: 'pnpm'
         
-    - name: Debug Environment
+    - name: Clean Installation
       run: |
-        pwd
-        ls -la
-        node --version
-        pnpm --version
+        rm -rf node_modules
+        rm -rf packages/*/node_modules
+        rm -rf pnpm-lock.yaml
         
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
-        echo "Installing dependencies..."
         pnpm install --no-frozen-lockfile
-        pnpm -r exec -- pnpm install --no-frozen-lockfile
         
     - name: Generate Prisma Client
       run: |
         cd packages/database
         pnpm prisma generate
         
-    - name: Build packages
-      run: |
-        echo "Building packages..."
-        pnpm -r build
-        
+    - name: Build Packages
+      run: pnpm -r build
+      
     - name: Lint
-      run: |
-        echo "Running lint..."
-        pnpm lint || echo "Lint failed but continuing..."
+      run: pnpm lint || echo "Lint failed but continuing..."
       
     - name: Test
-      run: |
-        echo "Running tests..."
-        pnpm test || echo "Tests failed but continuing..."
+      run: pnpm test || echo "Tests failed but continuing..."

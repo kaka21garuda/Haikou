@@ -3,14 +3,36 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "ESNext",
+        "module": "CommonJS", // Changed from ESNext for Node.js compatibility
         "moduleResolution": "Node",
-        "target": "ESNext",
+        "target": "ES2020", // Changed to match root config
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "composite": true, // Added for project references
+        "declaration": true, // Added for better TypeScript support
+        "baseUrl": ".", // Added for proper path resolution
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@haikou/*": [
+                "../*/src"
+            ] // Added to resolve other packages
+        }
     },
+    "references": [ // Added project references
+        {
+            "path": "../logger"
+        },
+        {
+            "path": "../database"
+        },
+        {
+            "path": "../cache"
+        }
+    ],
     "include": [
         "src/**/*"
     ],
