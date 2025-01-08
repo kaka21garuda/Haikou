@@ -1,22 +1,25 @@
-node_modules
-.env*
-dist
-build
-coverage
-EOF
-
 # Dependencies
+node_modules/
+**/node_modules/
 .pnpm-store/
 
+# Environment
+.env*
+
+# Build outputs
+dist/
+build/
+coverage/
+
 # Hardhat files
-artifacts
-cache
-typechain
-typechain-types
+artifacts/
+cache/
+typechain/
+typechain-types/
 
 # IDE
-.vscode
-.idea
+.vscode/
+.idea/
 *.swp
 *.swo
 
@@ -37,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # Next.js
-.next
-out
+.next/
+out/

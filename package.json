@@ -1,17 +1,20 @@
 {
   "name": "haikou",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky",
-    "dev": "dotenv -e config/development.env pnpm run start:dev",
+    "dev": "dotenv -e config/development.env pnpm run build",
     "staging": "dotenv -e config/staging.env pnpm run start:prod",
     "prod": "dotenv -e config/production.env pnpm run start:prod",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "pnpm -r clean"
   },
-  "private": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,10 +31,14 @@
     "hardhat": "^2.22.17",
     "husky": "^9.1.7",
     "lint-staged": "^15.3.0",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "typescript": "^5.3.3",
+    "dotenv-cli": "^7.3.0"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@haikou/database": "workspace:*",
+    "@haikou/cache": "workspace:*",
+    "@haikou/monitoring": "workspace:*",
+    "@haikou/logger": "workspace:*"
   }
 }
