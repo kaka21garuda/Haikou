@@ -42,14 +42,6 @@ jobs:
         echo "Installing dependencies..."
         pnpm install --no-frozen-lockfile
         
-    - name: Initialize workspace packages
-      run: |
-        echo "Initializing workspace packages..."
-        cd packages/database && pnpm init
-        cd ../logger && pnpm init
-        cd ../monitoring && pnpm init
-        cd ../cache && pnpm init
-        
     - name: Build packages
       run: |
         echo "Building packages..."

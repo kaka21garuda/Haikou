@@ -12,10 +12,10 @@ build/
 coverage/
 
 # Hardhat files
-artifacts/
-cache/
-typechain/
-typechain-types/
+/artifacts
+/.cache
+/typechain
+/typechain-types
 
 # IDE
 .vscode/
