@@ -1,23 +1,22 @@
 {
   "name": "@haikou/database",
   "version": "0.0.1",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "prebuild": "prisma generate",
     "build": "tsc",
-    "clean": "rm -rf dist",
-    "dev": "tsc -w",
-    "lint": "eslint src/",
-    "db:migrate": "prisma migrate deploy",
-    "db:generate": "prisma generate",
-    "db:studio": "prisma studio"
+    "clean": "rimraf dist",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^6.1.0"
+    "@prisma/client": "^5.7.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "prisma": "^6.1.0",
-    "typescript": "^5.0.0"
+    "prisma": "^5.7.1",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
   }
 }
