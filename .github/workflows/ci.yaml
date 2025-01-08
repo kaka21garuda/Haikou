@@ -27,7 +27,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'pnpm'
         
     - name: Debug Environment
@@ -41,22 +41,26 @@ jobs:
       run: |
         echo "Installing dependencies..."
         pnpm install --no-frozen-lockfile
-        echo "Dependencies installed"
-        ls -la node_modules
+        
+    - name: Initialize workspace packages
+      run: |
+        echo "Initializing workspace packages..."
+        cd packages/database && pnpm init
+        cd ../logger && pnpm init
+        cd ../monitoring && pnpm init
+        cd ../cache && pnpm init
+        
+    - name: Build packages
+      run: |
+        echo "Building packages..."
+        pnpm -r build
         
     - name: Lint
       run: |
-        echo "Current package.json content:"
-        cat package.json
-        echo "\nRunning lint..."
+        echo "Running lint..."
         pnpm lint || echo "Lint failed but continuing..."
       
     - name: Test
       run: |
         echo "Running tests..."
         pnpm test || echo "Tests failed but continuing..."
-      
-    - name: Build
-      run: |
-        echo "Running build..."
-        pnpm build || echo "Build failed but continuing..."

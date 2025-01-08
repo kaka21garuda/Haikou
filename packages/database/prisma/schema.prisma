@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Based on PRD Section 2.1.1 Agent Classification
+enum AgentLevel {
+  SUPERVISED_EXECUTION
+  CONDITIONAL_AUTONOMY
+  SUPERVISED_AUTONOMY
+  HIGH_AUTONOMY
+  FULL_AUTONOMY
+}
+
+// Based on PRD Section 2.1.2
+enum AgentType {
+  TREASURY
+  GOVERNANCE
+  SECURITY
+}
+
+model Agent {
+  id          String     @id @default(cuid())
+  level       AgentLevel
+  type        AgentType
+  status      String
+  metadata    Json?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+// Based on PRD Section 2.2 Cross-Chain Infrastructure
+model Chain {
+  id        String   @id
+  name      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Based on PRD Section 2.3 Economic Framework
+model Transaction {
+  id        String   @id @default(cuid())
+  chainId   String
+  type      String
+  amount    Decimal
+  status    String
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,15 @@
+{"level":"info","message":"Monitoring server started on port 9090","timestamp":"2025-01-07T11:09:47.343Z"}
+{"level":"info","message":"Monitoring server started on port 9090","timestamp":"2025-01-07T11:12:07.893Z"}
+{"level":"info","message":"Monitoring server started on port 9090","timestamp":"2025-01-07T11:14:24.294Z"}
+{"level":"info","message":"Monitoring server started on port 9090","metadata":{"timestamp":"2025-01-07 18:14:45"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:20:33"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:20:44"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:20:53"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:21:14"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:31:30"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:31:43"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:31:55"}}
+{"level":"info","message":"Monitoring server started","metadata":{"port":9090,"timestamp":"2025-01-07 18:32:16"}}
+{"level":"info","message":"This is an info message","metadata":{"timestamp":"2025-01-07 18:32:28","user":"test-user"}}
+{"level":"warn","message":"This is a warning message","metadata":{"attention":"needed","timestamp":"2025-01-07 18:32:28"}}
+{"level":"error","message":"This is an error message","metadata":{"critical":false,"error":"Test error","stack":"Error: Test error\n    at <anonymous> (/Users/bukacakrawala/Desktop/haikou/packages/monitoring/src/server.ts:58:44)\n    at Layer.handle [as handle_request] (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)\n    at Layer.handle [as handle_request] (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)\n    at Layer.handle [as handle_request] (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:91:12)\n    at trim_prefix (/Users/bukacakrawala/Desktop/haikou/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:328:13)","timestamp":"2025-01-07 18:32:28"}}

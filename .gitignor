@@ -1,0 +1,8 @@
+
+# Node modules - thorough ignore
+node_modules/
+**/node_modules/
+packages/*/node_modules/
+**/node_modules/**/*
+.pnpm-store/
+

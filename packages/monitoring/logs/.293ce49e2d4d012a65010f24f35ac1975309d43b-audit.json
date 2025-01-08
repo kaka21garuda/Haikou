@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/bukacakrawala/Desktop/haikou/packages/monitoring/logs/.293ce49e2d4d012a65010f24f35ac1975309d43b-audit.json",
+    "files": [
+        {
+            "date": 1736249854749,
+            "name": "/Users/bukacakrawala/Desktop/haikou/packages/monitoring/logs/2025-01-07-error.log",
+            "hash": "613c43826df9d1199d31afbf2945117c1ad4069cadc22b8cbb1ba9d69da984c8"
+        }
+    ],
+    "hashType": "sha256"
+}
